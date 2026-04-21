@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>主体切换项目甘特图</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%); min-height: 100vh; padding: 15px; }
+    .container { max-width: 100%; overflow-x: auto; }
+    h1 { color: #f1f5f9; text-align: center; margin-bottom: 5px; font-size: 26px; }
+    .subtitle { color: #94a3b8; text-align: center; margin-bottom: 20px; font-size: 13px; }
+    .legend { display: flex; justify-content: center; gap: 25px; margin-bottom: 15px; flex-wrap: wrap; }
+    .legend-item { display: flex; align-items: center; gap: 6px; color: #e2e8f0; font-size: 12px; }
+    .legend-box { width: 40px; height: 12px; border-radius: 3px; }
+    .legend-box.planning { background: #6366f1; }
+    .legend-box.execution { background: #22c55e; }
+    .legend-box.testing { background: #f59e0b; }
+    .legend-box.completed { background: #10b981; }
+    .legend-box.holiday { background: #ef4444; }
+    table { width: 90%; margin: 0 auto; border-collapse: collapse; background: #1c2128; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+    th, td { border: 1px solid #374151; padding: 8px; text-align: center; font-size: 11px; color: #e2e8f0; }
+    th { background: #1e293b; color: #94a3b8; font-weight: 600; }
+    th.month { background: #0f172a; color: #e2e8f0; font-size: 12px; }
+    th.week { color: #60a5fa; font-size: 10px; width: 60px; }
+    th.holiday { background: #7f1d1d; color: #fca5a5; }
+    td.task { text-align: left; color: #f1f5f9; width: 200px; background: #1c2128; }
+    td.owner { color: #94a3b8; width: 90px; font-size: 10px; background: #1c2128; }
+    td.phase { background: #0f172a; font-weight: 600; color: #60a5fa; text-align: left; }
+    .bar { height: 20px; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; color: #fff; font-size: 9px; font-weight: 500; padding: 0 4px; }
+    .bar.planning { background: linear-gradient(90deg, #6366f1, #8b5cf6); }
+    .bar.execution { background: linear-gradient(90deg, #22c55e, #16a34a); }
+    .bar.testing { background: linear-gradient(90deg, #f59e0b, #d97706); }
+    .bar.completed { background: linear-gradient(90deg, #10b981, #059669); }
+    .milestone { display: inline-block; width: 12px; height: 12px; background: #f0f6fc; transform: rotate(45deg); margin-right: 5px; }
+    .summary { background: #0f172a; padding: 15px; margin-top: 20px; border-radius: 12px; }
+    .summary h3 { color: #60a5fa; margin-bottom: 12px; font-size: 14px; }
+    .summary-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .summary-item { background: #1e293b; padding: 12px; border-radius: 8px; }
+    .summary-item label { color: #94a3b8; font-size: 11px; display: block; margin-bottom: 4px; }
+    .summary-item span { color: #f1f5f9; font-size: 16px; font-weight: 600; }
+    .issues { background: #0f172a; padding: 15px; margin-top: 15px; border-radius: 12px; }
+    .issues h3 { color: #22c55e; margin-bottom: 12px; font-size: 14px; }
+    .issue-item { display: flex; align-items: center; gap: 8px; padding: 8px; background: #1e293b; border-radius: 6px; margin-bottom: 8px; color: #f1f5f9; font-size: 12px; }
+    .issue-icon { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; }
+    .monitoring { background: #0f172a; padding: 15px; margin-top: 15px; border-radius: 12px; }
+    .monitoring h3 { color: #60a5fa; margin-bottom: 12px; font-size: 14px; }
+    .monitoring-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .monitoring-item { background: #1e293b; padding: 12px; border-radius: 8px; }
+    .monitoring-item h4 { color: #60a5fa; font-size: 13px; margin-bottom: 6px; }
+    .monitoring-item p { color: #94a3b8; font-size: 11px; line-height: 1.5; }
+    .monitoring-item .monitor-icon { width: 8px; height: 8px; border-radius: 50%; background: #60a5fa; display: inline-block; margin-right: 6px; }
+    .footer-note { color: #64748b; text-align: center; margin-top: 15px; font-size: 11px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🚀 主体切换项目甘特图</h1>
+    <p class="subtitle">项目周期：2026年1月9日 - 2026年4月1日 | 财务BP主导 · 多部门协同</p>
+    <div class="legend">
+      <div class="legend-item"><div class="legend-box planning"></div>规划阶段</div>
+      <div class="legend-item"><div class="legend-box execution"></div>执行阶段</div>
+      <div class="legend-item"><div class="legend-box testing"></div>测试验证</div>
+      <div class="legend-item"><div class="legend-box completed"></div>已完成/持续</div>
+      <div class="legend-item"><div class="legend-box holiday"></div>春节假期</div>
+    </div>
+    <table>
+      <tr><th>任务模块</th><th>负责</th><th class="month" colspan="2">1月</th><th class="month" colspan="4">2月</th><th class="month" colspan="4">3月</th></tr>
+      <tr><th></th><th></th><th class="week">W1<br>1.6-12</th><th class="week">W2<br>1.13-26</th><th class="week holiday">春节</th><th class="week">W4<br>2.3-16</th><th class="week">W5<br>2.17-3.2</th><th class="week">W6<br>3.3-16</th><th class="week">W7<br>3.17-30</th><th class="week">W8<br>3.31-4.6</th></tr>
+      <tr><td class="task phase" colspan="10">📋 规划阶段</td></tr>
+      <tr><td class="task">相关方识别+影响面评估</td><td class="owner">财务BP</td><td><span class="bar planning" style="width:170px;">W1-W2 (1.6-1.26)</span></td><td></td><td class="holiday"></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="task">方案设计+项目排期</td><td class="owner">财务BP</td><td></td><td><span class="bar planning" style="width:80px;">W2后段</span></td><td class="holiday"></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="task phase phase-green" colspan="10">💰 执行阶段-资金</td></tr>
+      <tr><td class="task">资金账户申请+充值+系统配置</td><td class="owner">集团资金</td><td></td><td></td><td class="holiday"></td><td><span class="bar execution" style="width:100px;">W4</span></td><td></td><td><span class="bar execution" style="width:100px;">W6</span></td><td></td><td></td></tr>
+      <tr><td class="task">收付款/分账跑通</td><td class="owner">支付中台</td><td></td><td></td><td class="holiday"></td><td></td><td></td><td></td><td><span class="bar execution" style="width:170px;">W7-W8 (3.17-4.6)</span></td><td></td></tr>
+      <tr><td class="task phase phase-orange" colspan="10">🏛️ 执行阶段-税务（1月底完成准备，3月底开第一张发票）</td></tr>
+      <tr><td class="task">税务报道+个税+票种核定</td><td class="owner">税务</td><td></td><td><span class="bar execution" style="width:80px;">W2后段</span></td><td class="holiday"></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="task">乐企申请+三方协议+实名认证</td><td class="owner">税务</td><td></td><td></td><td class="holiday"></td><td><span class="bar execution" style="width:100px;">W4</span></td><td></td><td><span class="bar execution" style="width:170px;">W6-W7 (3.3-3.23)</span></td><td></td><td></td></tr>
+      <tr><td class="task phase phase-purple" colspan="10">📝 执行阶段-换签</td></tr>
+      <tr><td class="task">供应商换签（机票+酒店）</td><td class="owner">法务&商务</td><td></td><td></td><td class="holiday"></td><td><span class="bar execution" style="width:100px;">W4</span></td><td></td><td><span class="bar execution" style="width:200px;">W6-W7 (3.3-3.30)</span></td><td></td><td></td></tr>
+      <tr><td class="task">端协换签（机酒产品）</td><td class="owner">法务&产品</td><td></td><td></td><td class="holiday"></td><td></td><td></td><td><span class="bar execution" style="width:200px;">W6-W7 (3.3-3.30)</span></td><td></td><td></td></tr>
+      <tr><td class="task phase phase-orange" colspan="10">🧪 测试验证</td></tr>
+      <tr><td class="task">数仓改造</td><td class="owner">财务数仓</td><td></td><td></td><td class="holiday"></td><td><span class="bar testing">W4提需求</span></td><td></td><td><span class="bar testing">W6改造</span></td><td></td><td></td></tr>
+      <tr><td class="task">产品端测试</td><td class="owner">产品(测协作)</td><td></td><td></td><td class="holiday"></td><td></td><td></td><td></td><td><span class="bar testing" style="width:170px;">W7-W8 (3.17-4.6)</span></td><td></td></tr>
+      <tr><td class="task phase phase-green" colspan="10">🔔 持续监控（贯穿全程+上线后）</td></tr>
+      <tr><td class="task">影响面动态评估与监控</td><td class="owner">财务BP</td><td><span class="bar completed">W1-W2</span></td><td></td><td class="holiday"></td><td><span class="bar completed">W4</span></td><td><span class="bar completed">W5</span></td><td><span class="bar completed">W6</span></td><td><span class="bar completed">W7</span></td><td><span class="bar completed">W8</span></td></tr>
+      <tr><td class="task phase" style="color:#10b981" colspan="10">✅ 项目完成</td></tr>
+      <tr><td class="task">🎯 项目正式上线</td><td class="owner">全员</td><td></td><td></td><td class="holiday"></td><td></td><td></td><td></td><td></td><td><span class="milestone"></span><span class="bar completed">4.1上线</span></td></tr>
+    </table>
+    <div class="summary">
+      <h3>📊 项目汇总</h3>
+      <div class="summary-grid">
+        <div class="summary-item"><label>项目周期</label><span>83天</span></div>
+        <div class="summary-item"><label>参与部门</label><span>12个</span></div>
+        <div class="summary-item"><label>参与人数</label><span>30+人</span></div>
+        <div class="summary-item"><label>完成里程碑</label><span>15个</span></div>
+      </div>
+    </div>
+    <div class="issues">
+      <h3>✅ 遗留事项（本周已完成）</h3>
+      <div class="issue-item"><div class="issue-icon"></div><span><strong>✅ 支付宝赔付：</strong>已完成（战合特殊申请已通过）</span></div>
+      <div class="issue-item"><div class="issue-icon"></div><span><strong>✅ 换签时期异动监控：</strong>已完成（换签期间平稳过渡）</span></div>
+    </div>
+    <div class="monitoring">
+      <h3>🔔 后续持续监控事项</h3>
+      <div class="monitoring-grid">
+        <div class="monitoring-item"><h4><span class="monitor-icon"></span>💰 资金侧监控</h4><p>专门产研群跟进资金异动，实时监控账户变动</p></div>
+        <div class="monitoring-item"><h4><span class="monitor-icon"></span>📈 财务数据监控</h4><p>设置阈值监控和风险报警机制，及时发现异常</p></div>
+      </div>
+    </div>
+    <p class="footer-note">注：春节期间（W3，1.27-2.2）暂停所有工作</p>
+  </div>
+</body>
+</html>
