@@ -3,59 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <title>主体切换项目甘特图</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%); min-height: 100vh; padding: 15px; }
-    .container { max-width: 100%; overflow-x: auto; }
-    h1 { color: #f1f5f9; text-align: center; margin-bottom: 5px; font-size: 26px; }
-    .subtitle { color: #94a3b8; text-align: center; margin-bottom: 20px; font-size: 13px; }
-    .legend { display: flex; justify-content: center; gap: 25px; margin-bottom: 15px; flex-wrap: wrap; }
-    .legend-item { display: flex; align-items: center; gap: 6px; color: #e2e8f0; font-size: 12px; }
-    .legend-box { width: 40px; height: 12px; border-radius: 3px; }
-    .legend-box.planning { background: #6366f1; }
-    .legend-box.execution { background: #22c55e; }
-    .legend-box.testing { background: #f59e0b; }
-    .legend-box.completed { background: #10b981; }
-    .legend-box.holiday { background: #ef4444; }
-    table { width: 90%; margin: 0 auto; border-collapse: collapse; background: #1c2128; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
-    th, td { border: 1px solid #374151; padding: 8px; text-align: center; font-size: 11px; color: #e2e8f0; }
-    th { background: #1e293b; color: #94a3b8; font-weight: 600; }
-    th.month { background: #0f172a; color: #e2e8f0; font-size: 12px; }
-    th.week { color: #60a5fa; font-size: 10px; width: 60px; }
-    th.holiday { background: #7f1d1d; color: #fca5a5; }
-    td.task { text-align: left; color: #f1f5f9; width: 200px; background: #1c2128; }
-    td.owner { color: #94a3b8; width: 90px; font-size: 10px; background: #1c2128; }
-    td.phase { background: #0f172a; font-weight: 600; color: #60a5fa; text-align: left; }
-    .bar { height: 20px; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; color: #fff; font-size: 9px; font-weight: 500; padding: 0 4px; }
-    .bar.planning { background: linear-gradient(90deg, #6366f1, #8b5cf6); }
-    .bar.execution { background: linear-gradient(90deg, #22c55e, #16a34a); }
-    .bar.testing { background: linear-gradient(90deg, #f59e0b, #d97706); }
-    .bar.completed { background: linear-gradient(90deg, #10b981, #059669); }
-    .milestone { display: inline-block; width: 12px; height: 12px; background: #f0f6fc; transform: rotate(45deg); margin-right: 5px; }
-    .summary { background: #0f172a; padding: 15px; margin-top: 20px; border-radius: 12px; }
-    .summary h3 { color: #60a5fa; margin-bottom: 12px; font-size: 14px; }
-    .summary-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-    .summary-item { background: #1e293b; padding: 12px; border-radius: 8px; }
-    .summary-item label { color: #94a3b8; font-size: 11px; display: block; margin-bottom: 4px; }
-    .summary-item span { color: #f1f5f9; font-size: 16px; font-weight: 600; }
-    .issues { background: #0f172a; padding: 15px; margin-top: 15px; border-radius: 12px; }
-    .issues h3 { color: #22c55e; margin-bottom: 12px; font-size: 14px; }
-    .issue-item { display: flex; align-items: center; gap: 8px; padding: 8px; background: #1e293b; border-radius: 6px; margin-bottom: 8px; color: #f1f5f9; font-size: 12px; }
-    .issue-icon { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; }
-    .monitoring { background: #0f172a; padding: 15px; margin-top: 15px; border-radius: 12px; }
-    .monitoring h3 { color: #60a5fa; margin-bottom: 12px; font-size: 14px; }
-    .monitoring-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .monitoring-item { background: #1e293b; padding: 12px; border-radius: 8px; }
-    .monitoring-item h4 { color: #60a5fa; font-size: 13px; margin-bottom: 6px; }
-    .monitoring-item p { color: #94a3b8; font-size: 11px; line-height: 1.5; }
-    .monitoring-item .monitor-icon { width: 8px; height: 8px; border-radius: 50%; background: #60a5fa; display: inline-block; margin-right: 6px; }
-    .footer-note { color: #64748b; text-align: center; margin-top: 15px; font-size: 11px; }
-  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/superkratos/piao@main/style.css">
 </head>
 <body>
   <div class="container">
     <h1>🚀 主体切换项目甘特图</h1>
     <p class="subtitle">项目周期：2026年1月9日 - 2026年4月1日 | 财务BP主导 · 多部门协同</p>
+    
     <div class="legend">
       <div class="legend-item"><div class="legend-box planning"></div>规划阶段</div>
       <div class="legend-item"><div class="legend-box execution"></div>执行阶段</div>
@@ -109,5 +63,7 @@
     </div>
     <p class="footer-note">注：春节期间（W3，1.27-2.2）暂停所有工作</p>
   </div>
+  
+  <script src="https://cdn.jsdelivr.net/gh/superkratos/piao@main/script.js"></script>
 </body>
 </html>
